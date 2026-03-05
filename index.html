@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daily tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-container">
+    <div class="bg-image"></div>
+</div>
+
+<div class="dashboard">
+    <header class="header">
+        <div class="logo"><h1>daily<span>routine</span></h1></div>
+        <div class="header-controls">
+            <div class="input-bar">
+                <input type="text" id ="habit-name" placeholder="what is your goal?">
+                <button class="btn btn-add" onclick="addHabit()">Add Goal</button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="nav">
+        <button class="btn" onclick="moveMonth(-1)">←</button>
+        <div class="month-name" id="month-display">March 2026</div>
+        <button class="btn" onclick="moveMonth(1)">→</button>
+    </div>
+    
+    <div class="daily-progress-container">
+        <div class="progress-label"> today's progress</div>
+        <div class="progress-bar-bg">
+        <div id ="daily-bar" class="progress-bar-fill"></div>
+    </div>
+
+    <span id="daily-percent">0%</span>
+    </div>
+
+    <div class="table-scroll">
+        <table >
+            <thead id="table-head"></thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

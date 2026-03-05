@@ -1,0 +1,251 @@
+:root {
+    --primary: #00b894;
+    --glass-bg: rgba(20,30,48,0.65);
+    --card-bg: rgba(35,47,66,0.9);
+    --text:#e9e7df;
+    --shadow:rgba(0,0,0,0.4);
+    /*customize colors from here and once it is store not have to repeat */
+}
+
+* {
+    box-sizing: border-box;   /* makes width and height including padding and border */
+}
+
+.btn,.dashboard,.habit-row,.bg-image{
+    transition: 0.4s ease;      /*add smooth animation while doing something*/
+}
+
+body{
+    margin: 0;                                        /*remove spacing*/
+    min-height: 100vh;                                /*full screen height */
+    font-family: 'Plus Jakarta Sans', sans-serif;     
+    color: var(--text);                               
+    display: flex;                                    /*center content horizontal*/
+    justify-content: center;                          /*center dashboard*/
+    padding: 20px;
+    overflow-x: hidden;                              /*prevent horizontall scroll*/
+    background: #000;                              /* black bg*/
+}
+
+.bg-container {
+    position: fixed;
+    top: 0;left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-image {
+    width: 100%;                             /*to make background full screen */
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4) contrast(1.1);            /*dark the image */
+    animation: kenBurns 20s infinite alternate;            /* slowly zoom in out effect*/
+}
+
+@keyframes kenBurns {
+    from {transform: scale(1);}                        /*create zoom in effect in webpage*/
+    to{transform: scale(1.1);}
+}
+
+.dashboard {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);                       /*blur background behind */
+    -webkit-backdrop-filter:blur(25px);
+    border-radius: 40px;
+    padding: 40px;
+    width: 100%;
+    max-width: 1200px;                                /*responsive width (max 1200 */
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 30px 60px var(--shadow);
+    margin-top: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.logo span { color : var(--primary);}             /* colors pro  green */
+
+.btn {                                          /* rounded ,dark background floating shadow*/
+    padding: 12px 24px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: var(--card-bg);
+    color: var(--text);
+    box-shadow: 0 10px 20px var(--shadow);
+}
+
+.btn-add { background: var(--primary); color: white;}  /* green button*/
+
+.btn:hover {                                /* moves up hover and stronger shadow*/
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px var(--shadow);
+}
+
+.input-bar {                          /*wraps input +button*/                                
+    display: flex;
+    background: var(--card-bg);
+    padding: 6px;
+    border-radius: 20px;
+}
+
+.input-bar input {                /*remove default */
+    border: none;
+    background: transparent;
+    padding: 10px 20px;
+    outline: none;
+    color: var(--text);
+    width: 220px;
+}
+
+.table-scroll {               /*Enables horizontal scroll on small screens*/
+    overflow-x:auto;
+}
+
+table{                      /*Space between rows.*/
+    width: 100%;
+    border-collapse: separate;
+    border-spacing:0 10px;
+}
+
+.habit-row {                /*Each habit is a card*/
+    background: var(--card-bg);
+    border-radius: 25px;
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+.habit-cell {            /*Large clickable area.*/
+    text-align: left;
+    padding: 25px;
+    font-weight: 700;
+    min-width: 260px;
+}
+
+.delete-btn {           /*Soft red background*/
+    background: rgba(255,118,117,0.1);
+    border: none;
+    color: #ff7675;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.delete-btn:hover {
+    background:#ff7675;
+    color: white;
+}
+
+input[type="checkbox"] {               /*checkbox*/
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+.nav {                                  /*center month control*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.month-name {                           /*large month size*/
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 30px;
+}
+
+.daily-progress-container {               /*style the progression*/
+    width: 100%;
+    max-width: 500px;
+    margin: 10px auto 40px auto;
+    padding: 20px 25px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+.progress-bar-bg {
+    width: 100%;
+    height: 14px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 20px;
+    background: linear-gradient(90deg,#00d2ff,#3a7bd5);
+    transition: width 0.5s ease;
+}
+
+.progress-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+#daily-percent {
+    margin-top: 6px;
+    font-weight: 700;
+}
+
+input[type="checkbox"] {
+    transition: transform 0.2s ease;
+}
+
+input[type="checkbox"]:active {
+    transform: scale(1.2);
+}
+
+@media (max-width:768px) {
+    .dashboard {
+        padding: 25px;
+        border-radius: 25px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .input-bar input {
+        width: 150px;
+    }
+    .month-name {
+        font-size: 22px;
+        margin: 0 15px;
+    }
+}
